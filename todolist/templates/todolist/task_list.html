@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Tasks {% endblock %}
+{% block custom_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+{% endblock %}
+{% block content %}
+<section class="vh-100">
+    <hr class="my-4">
+        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+          <i class="fas fa-check-square me-1"></i>
+          <u>My Todo-s</u>
+        </p>
+
+        <div class="pb-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-row align-items-center">
+                <form method="POST">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <input type="submit" class="btn btn-primary" value="Add">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% for task in tasks %}
+            <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                <a href="{% url 'todolist:task-detail' task.id %}" class="lead fw-normal mb-0 bg-light w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+            </li>
+        {% empty %}
+            <h3>No Item</h3>
+        {% endfor %}
+
+
+</section>
+{% endblock %}

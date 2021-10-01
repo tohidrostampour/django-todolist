@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<table class="table table-hover">
+    <thead>
+        <a href="{% url 'todolist:task-delete' task.id %}" class="btn btn-outline btn-outline-dashed btn-outline-primary
+            btn-active-light-primary">Delete</a>
+        <a href="{% url 'todolist:task-update' task.id %}" class="btn btn-outline btn-outline-dashed btn-outline-info
+            btn-active-light-info">Edit</a>
+        <tr>
+        <th scope="col">Todo item</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.due_date }}</td>
+            <td>{{ task.completed }}</td>
+            <td>{{ task.category }}</td>
+        </tr>
+    </tbody>
+    
+{% endblock %}

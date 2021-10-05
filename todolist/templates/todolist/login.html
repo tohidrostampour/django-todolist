@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block custom_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/style.css' %}">
+{% endblock custom_tags %}
+{% block content %}
+    <form class="forms" action="" method="post">
+        {% csrf_token %}
+        
+        <label class="label" for="{{ form.username.id_for_label }}"> Username </label>
+        {{ form.username }} <br/>
+        {{ form.username.errors }}
+
+        <label class="label" for="{{ form.password.id_for_label }}"> Password </label>
+        {{ form.password }} <br/>
+        {{ form.password.errors }}
+
+
+        <input type="submit" value="Login" class="btn btn-outline btn-outline-dashed btn-outline-dark
+        btn-active-light-info">
+    </form>
+{% endblock content %}

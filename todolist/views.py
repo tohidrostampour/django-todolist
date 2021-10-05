@@ -1,9 +1,36 @@
 from bootstrap_datepicker_plus import DateTimePickerInput
+from django.db.models import query
+from django.http.response import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
+from django.contrib.auth.views import LoginView
 from django.views import View
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login, logout
 from .models import Task
 from .forms import TaskCreateForm
-from django.urls import reverse_lazy
+
+
+
+
+class UserLoginView(LoginView):
+    template_name = 'todolist/login.html'
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('todolist:tasks')
+        else:
+            messages.error(request, 'Wrong password or username')
+
+
+class UserLogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('todolist:user-login')
 
 
 class TaskList(ListView):
@@ -12,6 +39,14 @@ class TaskList(ListView):
     template_name = 'todolist/task_list.html'
     # if you don't assign anything it'll be object_list in templates
     context_object_name = 'tasks'
+
+    def get_queryset(self):
+            queryset = super(TaskList, self).get_queryset()
+            try:
+                queryset = queryset.filter(user=self.request.user)
+            except:
+                return None
+            return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -28,6 +63,7 @@ class TaskCreate(FormView):
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():
+            form.instance.user = request.user
             form.save()
         return super().post(request, *args, **kwargs)
     

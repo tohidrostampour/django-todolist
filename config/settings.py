@@ -28,7 +28,7 @@ INSTALLED_APPS = [
 
     "bootstrap4",
     'bootstrap_datepicker_plus',
-    
+
     'todolist.apps.TodolistConfig',
 ]
 
@@ -111,6 +111,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "todolist/static"
 
-
-DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

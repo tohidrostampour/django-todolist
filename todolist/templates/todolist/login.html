@@ -4,12 +4,12 @@
     Login
 {% endblock title %}
 {% block custom_tags %}
-    <link rel="stylesheet" type="text/css" href="{% static 'account/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
 {% endblock custom_tags %}
 {% block content %}
     <form class="forms" action="" method="post">
         {% csrf_token %}
-        
+
         <label class="label" for="{{ form.username.id_for_label }}"> Username </label>
         {{ form.username }} <br/>
         {{ form.username.errors }}

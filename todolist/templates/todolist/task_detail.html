@@ -1,14 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block custom_tags %}
+<style>
+    .btn{
+        color: white;
+        font-size: 16px;
+        background-color: #73685F;
+        border-radius: 10px;
+        margin-right: 10px;
+        border: none;
+        outline: none;
+      }
+      .btn:hover{
+        background-color: #A67A29;
+        color: #8ab0ca;
+        letter-spacing: 2px;
+        transition: 1.5s;
+      }
+      tr th{
+          color: #8ab0ca;
+      }
+      tr td{
+          color: #fff;
+      }
+      tr:hover td{
+          color: #8ab0ca;
+      }
+</style>
+{% endblock custom_tags %}
+
+
 {% block content %}
 <table class="table table-hover">
     <thead>
-        <a href="{% url 'todolist:task-delete' task.id %}" class="btn btn-outline btn-outline-dashed btn-outline-primary
-            btn-active-light-primary">Delete</a>
-        <a href="{% url 'todolist:task-update' task.id %}" class="btn btn-outline btn-outline-dashed btn-outline-info
-            btn-active-light-info">Edit</a>
-        <a href="{% url 'todolist:tasks' %}" class="btn btn-outline btn-outline-dashed btn-outline-dark
-        btn-active-light-info"> Back </a>
+        <a href="{% url 'todolist:task-delete' task.id %}" class="btn">Delete</a>
+        <a href="{% url 'todolist:task-update' task.id %}" class="btn">Edit</a>
+        <a href="{% url 'todolist:tasks' %}" class="btn"> Back </a>
         <tr>
         <th scope="col">Todo item</th>
         <th scope="col">Due Date</th>

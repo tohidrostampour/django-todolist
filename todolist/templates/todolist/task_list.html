@@ -3,13 +3,80 @@
 {% block title %} Tasks {% endblock %}
 {% block custom_tags %}
     <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+    <style>
+      .btn{
+        width: 20%;
+         padding: .55rem;
+         color: white;
+         font-size: 16px;
+         background-color: #73685F;
+         border-radius: 10px;
+         border: none;
+         outline: none;
+      }
+      .btn:hover{
+        background-color: #A67A29;
+        color: #8ab0ca;
+        width: 25%;
+        transition: width 1.5s;
+      }
+      .h1 u{
+        text-decoration: none;
+        color: #8ab0ca;
+      }
+      .card{
+        background-color: #BABDBF;
+      }
+      form{
+        display: flex;
+        width: 100%;
+        padding: 1rem;
+      }
+      form .input-field{
+        width: 80%;
+      }
+      form .input-field input{
+        width: 80%;
+        background-color: #BABDBF;
+        border: none;
+        outline: none !important;
+        color: #3F3A40;
+        border-bottom: 1px solid #A67A29;
+      }
+
+      form .input-field label{
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        color:#A67A29;
+        margin-right: 5px;
+      }
+
+      .list-group-item{
+        width: 70%;
+        margin: 1rem auto;
+      }
+      
+      .list-group-item a{
+        text-decoration: none;
+        color: #A67A29;
+        text-align: center;
+        background-color: #8ab0ca;
+    
+      }
+      .list-group-item a:hover{
+        color: #73685F;
+        text-decoration: underline;
+      }
+
+
+
+    </style>
 {% endblock %}
 {% block content %}
 
 
 {% if request.user.is_authenticated %}
-  <a href="{% url 'todolist:user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-info
-              btn-active-light-info">Logout</a>
+  <a href="{% url 'todolist:user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
               <section class="vh-100">
                 <hr class="my-4">
                     <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
@@ -20,10 +87,12 @@
                     <div class="pb-2">
                       <div class="card">
                         <div class="card-body">
-                          <div class="d-flex flex-row align-items-center">
+                          <div class="d-flex flex-column">
                             <form method="POST">
-                              {% csrf_token %}
-                              {{ form.as_p }}
+                              <div class="input-field">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                              </div>
                               <input type="submit" class="btn btn-primary" value="Add">
                             </form>
                           </div>
@@ -34,7 +103,7 @@
                     {% for task in tasks %}
                       {% if not task.completed %}
                         <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                            <a href="{% url 'todolist:task-detail' task.id %}" class="lead fw-normal mb-0 bg-light w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+                            <a href="{% url 'todolist:task-detail' task.id %}" class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
                         </li>
                       {% endif %}
                     {% empty %}

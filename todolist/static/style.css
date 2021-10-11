@@ -1,0 +1,33 @@
+#list1 .form-control {
+  border-color: transparent;
+}
+#list1 .form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+#list1 .select-input.form-control[readonly]:not([disabled]) {
+  background-color: #fbfbfb;
+}
+
+.forms{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: #c52727;
+}
+
+.forms .btn{
+
+  background-color: #c52727;
+
+}
+/* Color Theme Swatches in Hex */
+.Retro-Futurism-1-hex { color: #D90B1C; }
+.Retro-Futurism-2-hex { color: #FAF566; }
+.Retro-Futurism-3-hex { color: #9ACFDD; }
+.Retro-Futurism-4-hex { color: #CABAAB; }
+.Retro-Futurism-5-hex { color: #202731; }
+
+
+
+

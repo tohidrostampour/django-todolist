@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block custom_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
+{% endblock custom_tags %}
+{% block content %}
+    <h1>Welcome to our website</h1> 
+    <form class="forms" action="" method="post">
+        {% csrf_token %}
+        
+       <div class="input-field">
+        <label class="label" for="{{ form.username.id_for_label }}"> Username </label>
+        {{ form.username }}
+        {{ form.username.errors }}
+       </div>
+
+       <div class="input-field">
+        <label class="label" for="{{ form.password.id_for_label }}"> Password </label>
+        {{ form.password }}
+        {{ form.password.errors }}
+       </div>
+
+
+        <input type="submit" value="Sign In" class="btn btn-outline btn-outline-dashed btn-outline-dark
+        btn-active-light-info">
+    </form>
+    <a href="{% url 'accounts:password_reset' %}">Forgot Password!</a>
+    <a href="{% url 'accounts:user-register'%}"> Sign Up</a>
+{% endblock content %}

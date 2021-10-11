@@ -1,71 +1,15 @@
 {% load bootstrap4 %}
+{% load static %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
+
 {{form.media}}
 
-<style>
-    body {
-        background-color: rgb(27, 27, 27);
-    }
-    form {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        margin: 5rem auto;
-        padding: 2rem;
-        align-items: center;
-        justify-content: center;
-        background-color: #3F3A40;
-        border-radius: 1rem;
-    }
-    form .input-field {
-        width: 100%;
-        margin: 2rem auto;
-    }
 
-    form .input-field label {
-        font-size: 20px;
-        font-family: Arial, Helvetica, sans-serif;
-        color:#A67A29;
-    }
+{% block custom_tags %}    
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+{% endblock custom_tags %}
 
-    .form-control {
-        width: 35%;
-    }
-    .input-group {
-        width: 35%;
-    }
-    
-    .form-group{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    form .btn{
-            background-color: #73685F;
-            width: 15%;
-            border-radius: 10px;
-            margin-top: 1rem;
-            color: #fff;
-            border: none;
-            outline: none;
-            font-size: 18px;
-
-        }
-    form .btn:hover{
-            background-color: #A67A29;
-            color: #8ab0ca;
-            letter-spacing: 2px;
-            width: 20%;
-            transition: 1.5s;
-    }
-
-    
-
-  
-   
-</style>
 
 <body>
     <form action="" method="POST">
@@ -73,7 +17,6 @@
             {% csrf_token %}
             {% bootstrap_form form %}
         </div>
-    
         <input class="btn" type="submit" value="Edit">
     </form>
 </body>

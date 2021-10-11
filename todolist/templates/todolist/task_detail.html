@@ -1,32 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block custom_tags %}
-<style>
-    .btn{
-        color: white;
-        font-size: 16px;
-        background-color: #73685F;
-        border-radius: 10px;
-        margin-right: 10px;
-        border: none;
-        outline: none;
-      }
-      .btn:hover{
-        background-color: #A67A29;
-        color: #8ab0ca;
-        letter-spacing: 2px;
-        transition: 1.5s;
-      }
-      tr th{
-          color: #8ab0ca;
-      }
-      tr td{
-          color: #fff;
-      }
-      tr:hover td{
-          color: #8ab0ca;
-      }
-</style>
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
 {% endblock custom_tags %}
 
 

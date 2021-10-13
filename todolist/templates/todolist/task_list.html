@@ -7,7 +7,7 @@
 {% block content %}
 
 
-  <a href="{% url 'accounts:user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
+  <a href="{% url 'user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
               <section class="vh-100">
                 <hr class="my-4">
                     <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
@@ -34,7 +34,11 @@
                     {% for task in tasks %}
                       {% if not task.completed %}
                         <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                            <a href="{% url 'todolist:task-detail' task.id %}" class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+                          <a href="{% url 'todolist:task-detail' task.id %}" class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+                        </li>
+                      {% else %}
+                        <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                          <a href="{% url 'todolist:task-detail' task.id %}" class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded"><s>{{ task.title }}</s></a>
                         </li>
                       {% endif %}
                     {% empty %}

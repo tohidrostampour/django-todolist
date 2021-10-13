@@ -2,12 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+from taggit.managers import TaggableManager
 
-class Category(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self) -> str:
-        return self.name
 
 
 class Task(models.Model):
@@ -20,9 +16,9 @@ class Task(models.Model):
     created = models.DateTimeField(default=timezone.now)
     due_date = models.DateTimeField(blank=True, null=True)
     completed = models.BooleanField(default=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
+    tags = TaggableManager(blank=True)
     priority = models.CharField(
-        max_length=1, choices=Priority.choices, blank=True, null=True)
+        max_length=1, choices=Priority.choices, default=Priority.LOW)
 
     class Meta:
         ordering = ('-created',)

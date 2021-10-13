@@ -11,7 +11,7 @@ from .forms import UserRegisterForm
 class UserRegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = 'accounts/register.html'
-    success_url = reverse_lazy('accounts:user-login')
+    success_url = reverse_lazy('user-login')
 
 
 class UserLoginView(LoginView):
@@ -30,4 +30,4 @@ class UserLoginView(LoginView):
 class UserLogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('accounts:user-login')
+        return redirect('user-login')

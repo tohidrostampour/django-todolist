@@ -5,7 +5,6 @@ from .views import UserRegisterView, UserLoginView, UserLogoutView
 
 
 
-app_name = 'accounts'
 urlpatterns = (
     path('reset-password/',
         auth_views.PasswordResetView.as_view(template_name='accounts/password_reset.html'),
@@ -20,11 +19,9 @@ urlpatterns = (
         name='password_reset_confirm'),
 
     path('reset-password-complete/',
-        auth_views.PasswordResetCompleteView.as_view(template_name='accounts/password_reset_done.html'), 
+        auth_views.PasswordResetCompleteView.as_view(template_name='accounts/password_reset_complete.html'), 
         name='password_reset_complete'),
-
-    path('register/', UserRegisterView.as_view(), name='user-register'),
-    path('login/', UserLoginView.as_view(), name='user-login'),
     path('logout/', UserLogoutView.as_view(), name='user-logout'),
-
+    path('register/', UserRegisterView.as_view(), name='user-register'),
+    path('login/', UserLoginView.as_view(), name='user-login')
 )

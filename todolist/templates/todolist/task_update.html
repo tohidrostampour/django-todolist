@@ -11,8 +11,8 @@
 {% endblock custom_tags %}
 
 
-<body>
-    <form action="" method="POST">
+<body class="task-update">
+    <form action="" method="POST" class="form-task-update">
         <div class="input-field">
             {% csrf_token %}
             {% bootstrap_form form %}

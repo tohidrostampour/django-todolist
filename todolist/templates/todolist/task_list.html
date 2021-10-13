@@ -2,11 +2,50 @@
 {% load static %}
 {% block title %} Tasks {% endblock %}
 {% block custom_tags %}
-    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
 {% endblock %}
 {% block content %}
 
+<div><i class="bi bi-circle-half"></i></div>
+<div class="theme-container">
+  <h3>Swich your theme</h3>
+  <form class="theme-form">
+    <div class="input-field">
+      <label>Main background color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>Box background color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>Title color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>Label color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>Button background color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>Button color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>button hover background color</label>
+      <input type="color">
+    </div>
+    <div class="input-field">
+      <label>Button hover color</label>
+      <input type="color">
+    </div>
+  </form>
+</div>
 
+<<<<<<< HEAD
   <a href="{% url 'user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
               <section class="vh-100">
                 <hr class="my-4">
@@ -46,3 +85,48 @@
                     {% endfor %}
             </section>
 {% endblock %}
+=======
+
+
+<div class="head-content">
+  <a href="{% url 'accounts:user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </svg>
+</div>
+<section class="vh-100">
+  <hr class="my-4">
+  <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+    <i class="fas fa-check-square me-1"></i>
+    <u>My Todo-s</u>
+  </p>
+
+  <div class="pb-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-column">
+          <form method="POST" class="form-task-list">
+            <div class="input-field">
+              {% csrf_token %}
+              {{ form.as_p }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="Add">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% for task in tasks %}
+  {% if not task.completed %}
+  <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <a href="{% url 'todolist:task-detail' task.id %}"
+      class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+  </li>
+  {% endif %}
+  {% empty %}
+  <h3>No Item</h3>
+  {% endfor %}
+</section>
+{% endblock %}
+>>>>>>> a29abc852d6a9e737f607638f07012783860a9af

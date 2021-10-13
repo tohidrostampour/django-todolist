@@ -4,14 +4,14 @@
 {% endblock %}
 
 
-<body>
+<body class="task-confirm">
     <div class="contains">
-        <form method="POST">
+        <form method="POST" class="form-confirm">
             {% csrf_token %}
             {{ form.as_p }}
             <p>Are you sure you want to delete this task?</p>
             <input type="submit" value="Delete">
-            <a href="{% url 'todolist:tasks' %}"> Go Back </a>
+            <a class="back" href="{% url 'todolist:tasks' %}"> Go Back </a>
         </form>
     </div>
 </body>

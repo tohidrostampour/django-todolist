@@ -1,70 +1,17 @@
-<style>
-    body {
-        background-color: #3F3A40;
-    }
-    a{
-        text-decoration: none;
-        font-size: 18px;
-        color: #E65553;
-        margin-left: 1rem;
-    
-    }
-
-    a:hover{
-        text-decoration: underline;
-        color: #8ab0ca;
-        letter-spacing: 1px;
-    }
-
-    .contains{
-        width: 98%;
-        margin: 3rem auto;
-        background-color: #BABDBF;
-    }
-
-    form{
-        display: flex;   
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-    }
-
-     form p{
-         color: #A67A29;
-         font-size: 28px;
-         font-style: bold;
-         margin-right: 2rem;
-     }
-     form input{
-         width: 10%;
-         padding: .55rem;
-         color: white;
-         font-size: 16px;
-         background-color: #73685F;
-         border-radius: 10px;
-         border: none;
-         outline: none;
-     }
-     form input:hover{
-            background-color: #A67A29;
-            color: #8ab0ca;
-            letter-spacing: 2px;
-            width: 15%;
-            transition: width 1.5s;
-        }
-
-</style>
+{% load static %}
+{% block custom_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+{% endblock %}
 
 
-
-<body>
+<body class="task-confirm">
     <div class="contains">
-        <form method="POST">
+        <form method="POST" class="form-confirm">
             {% csrf_token %}
             {{ form.as_p }}
             <p>Are you sure you want to delete this task?</p>
             <input type="submit" value="Delete">
-            <a href="{% url 'todolist:tasks' %}"> Go Back </a>
+            <a class="back" href="{% url 'todolist:tasks' %}"> Go Back </a>
         </form>
     </div>
 </body>

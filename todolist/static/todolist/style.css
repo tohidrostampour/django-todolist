@@ -1,22 +1,211 @@
-#list1 .form-control {
-  border-color: transparent;
+
+body {
+  background-color: #3F3A40;
 }
-#list1 .form-control:focus {
-  border-color: transparent;
-  box-shadow: none;
+a{
+  text-decoration: none;
+  font-size: 18px;
+  color: #E65553;
+  margin-left: 1rem;
 }
-#list1 .select-input.form-control[readonly]:not([disabled]) {
-  background-color: #fbfbfb;
+
+a:hover{
+  text-decoration: underline;
+  color: #8ab0ca;
+  letter-spacing: 1px;
 }
-.forms{
-  width: 50%;
+
+.contains{
+  width: 98%;
+  margin: 3rem auto;
+  background-color: #BABDBF;
+}
+
+form{
+  display: flex;   
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+form p{
+   color: #A67A29;
+   font-size: 28px;
+   font-style: bold;
+   margin-right: 2rem;
+}
+form input{
+   width: 10%;
+   padding: .55rem;
+   color: white;
+   font-size: 16px;
+   background-color: #73685F;
+   border-radius: 10px;
+   border: none;
+   outline: none;
+}
+form input:hover{
+      background-color: #A67A29;
+      color: #8ab0ca;
+      letter-spacing: 2px;
+      width: 15%;
+      transition: width 1.5s;
+  }
+
+/* end task confirm */
+
+  .btn{
+    color: white;
+    font-size: 16px;
+    background-color: #73685F;
+    border-radius: 10px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+  }
+  .btn:hover{
+    background-color: #A67A29;
+    color: #8ab0ca;
+    letter-spacing: 2px;
+    transition: 1.5s;
+  }
+  tr th{
+      color: #8ab0ca;
+  }
+  tr td{
+      color: #fff;
+  }
+  tr:hover td{
+      color: #8ab0ca;
+  }
+
+  /* end task detail */
+
+
+  .btn{
+    width: 20%;
+     padding: .55rem;
+     color: white;
+     font-size: 16px;
+     background-color: #73685F;
+     border-radius: 10px;
+     border: none;
+     outline: none;
+  }
+  .btn:hover{
+    background-color: #A67A29;
+    color: #8ab0ca;
+    width: 25%;
+    transition: width 1.5s;
+  }
+  .h1 u{
+    text-decoration: none;
+    color: #8ab0ca;
+  }
+  .card{
+    background-color: #BABDBF;
+  }
+  form{
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+  }
+  form .input-field{
+    width: 80%;
+  }
+  form .input-field input{
+    width: 80%;
+    background-color: #BABDBF;
+    border: none;
+    outline: none !important;
+    color: #3F3A40;
+    border-bottom: 1px solid #A67A29;
+  }
+
+  form .input-field label{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#A67A29;
+    margin-right: 5px;
+  }
+
+  .list-group-item{
+    width: 70%;
+    margin: 1rem auto;
+  }
+  
+  .list-group-item a{
+    text-decoration: none;
+    color: #A67A29;
+    text-align: center;
+    background-color: #8ab0ca;
+
+  }
+  .list-group-item a:hover{
+    color: #73685F;
+    text-decoration: underline;
+  }
+
+/* end task list */
+
+
+
+body {
+  background-color: rgb(27, 27, 27);
+}
+form {
   display: flex;
   flex-direction: column;
-  background-color: #c52727;
+  width: 90%;
+  margin: 5rem auto;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #3F3A40;
+  border-radius: 1rem;
+}
+form .input-field {
+  width: 100%;
+  margin: 2rem auto;
 }
 
-.forms .btn{
-
-  background-color: #c52727;
-
+form .input-field label {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#A67A29;
 }
+
+.form-control {
+  width: 35%;
+}
+.input-group {
+  width: 35%;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form .btn{
+      background-color: #73685F;
+      width: 15%;
+      border-radius: 10px;
+      margin-top: 1rem;
+      color: #fff;
+      border: none;
+      outline: none;
+      font-size: 18px;
+
+  }
+form .btn:hover{
+      background-color: #A67A29;
+      color: #8ab0ca;
+      letter-spacing: 2px;
+      width: 20%;
+      transition: 1.5s;
+}
+
+
+/* end task update */

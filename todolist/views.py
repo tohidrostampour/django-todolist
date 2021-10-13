@@ -1,36 +1,15 @@
 from bootstrap_datepicker_plus import DateTimePickerInput
-from django.db.models import query
-from django.http.response import HttpResponseRedirect, HttpResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
-from django.contrib.auth.views import LoginView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, FormView
 from django.views import View
-from django.contrib import messages
 from django.urls import reverse_lazy
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Task
 from .forms import TaskCreateForm
 
 
 
 
-class UserLoginView(LoginView):
-    template_name = 'todolist/login.html'
-    def post(self, request):
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('todolist:tasks')
-        else:
-            messages.error(request, 'Wrong password or username')
-
-
-class UserLogoutView(View):
-    def get(self, request):
-        logout(request)
-        return redirect('todolist:user-login')
 
 
 class TaskList(ListView):
@@ -54,11 +33,10 @@ class TaskList(ListView):
         return context
 
 
-class TaskCreate(FormView):
+class TaskCreate(LoginRequiredMixin ,FormView):
     model = Task 
     form_class = TaskCreateForm
     template_name = 'todolist/task_list.html'
-    success_url = reverse_lazy('todolist:tasks')
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -70,7 +48,8 @@ class TaskCreate(FormView):
     success_url = reverse_lazy('todolist:tasks')
 
 
-class TaskListCreateView(View):
+class TaskListCreateView(LoginRequiredMixin, View):
+    login_url = '/accounts/login/'
     def get(self, request, *args, **kwargs):
         view = TaskList.as_view()
         return view(request,*args, **kwargs)
@@ -80,14 +59,17 @@ class TaskListCreateView(View):
         return view(request,*args, **kwargs)
 
 
-class TaskDetail(DetailView):
+class TaskDetail(LoginRequiredMixin, DetailView):
+    login_url = '/accounts/login/'
     model = Task
     template_name = 'todolist/task_detail.html'
     context_object_name = 'task'
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin, UpdateView):
+    login_url = '/accounts/login/'
     model = Task
+    # form_class = ToDoForm
     template_name = 'todolist/task_update.html'
     fields = ('title', 'due_date', 'completed', 'category', 'priority')
     success_url = reverse_lazy('todolist:tasks')
@@ -98,7 +80,8 @@ class TaskUpdate(UpdateView):
         return form
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(LoginRequiredMixin, DeleteView):
+    login_url = '/accounts/login/'
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('todolist:tasks')

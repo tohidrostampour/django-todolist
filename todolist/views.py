@@ -3,11 +3,12 @@ from django.views.generic import ListView, DetailView, UpdateView, DeleteView, F
 from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, get_object_or_404
+
+from taggit.models import Tag
 
 from .models import Task
 from .forms import TaskCreateForm
-
-
 
 
 
@@ -69,9 +70,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
     model = Task
-    # form_class = ToDoForm
     template_name = 'todolist/task_update.html'
-    fields = ('title', 'due_date', 'completed', 'category', 'priority')
+    fields = ('title', 'due_date', 'tags','priority', 'completed')
     success_url = reverse_lazy('todolist:tasks')
 
     def get_form(self):
@@ -85,3 +85,4 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('todolist:tasks')
+

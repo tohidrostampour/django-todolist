@@ -217,9 +217,23 @@
   }
   .list-group-item a:hover{
     color: var(--btn-text-hover);
-    text-decoration: underline;
+    text-decoration: none;
+    letter-spacing:3px;
   }
 
+  .list-group-item .high{
+    background-color:rgb(90, 29, 29);
+  }
+  .list-group-item .medium{
+    background-color:rgb(143, 63, 9);
+  }
+  .list-group-item .low{
+    background-color:rgb(99, 138, 29);
+  }
+  .list-group-item .done{
+    background-color:rgb(255, 255, 255);
+    color:rgb(184, 25, 25);
+  }
 /* end task list */
 
 

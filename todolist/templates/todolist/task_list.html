@@ -3,6 +3,7 @@
 {% block title %} Tasks {% endblock %}
 {% block custom_tags %}
 <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+
 {% endblock %}
 {% block content %}
 
@@ -45,10 +46,12 @@
   </form>
 </div>
 
-  <div class="head-content">
-  <a href="{% url 'user-logout'%}" class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16">
-    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+<div class="head-content">
+  <a href="{% url 'user-logout'%}"
+    class="btn btn-outline btn-outline-dashed btn-outline-infobtn-active-light-info">Logout</a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-circle-half"
+    viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
   </svg>
 </div>
 <section class="vh-100">
@@ -75,15 +78,30 @@
   </div>
 
   {% for task in tasks %}
+
+
   {% if not task.completed %}
-    <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-      <a href="{% url 'todolist:task-detail' task.id %}"
-        class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
-    </li>
+    {% if task.priority == 'L' %}
+      <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+        <a href="{% url 'todolist:task-detail' task.id %}"
+          class="low fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+      </li>
+    {% elif task.priority == 'M' %}
+      <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+        <a href="{% url 'todolist:task-detail' task.id %}"
+          class="medium fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+      </li>
+    {% else %}
+      <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+        <a href="{% url 'todolist:task-detail' task.id %}"
+          class="high fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+      </li>
+    {% endif %}
+    
   {% else %}
     <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
       <a href="{% url 'todolist:task-detail' task.id %}"
-        class="lead fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded"><s>{{ task.title }}</s></a>
+        class="done fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded"><s>{{ task.title }}</s></a>
     </li>
   {% endif %}
   {% empty %}
@@ -91,5 +109,3 @@
   {% endfor %}
 </section>
 {% endblock %}
-
-

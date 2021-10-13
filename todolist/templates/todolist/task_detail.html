@@ -15,7 +15,7 @@
         <th scope="col">Todo item</th>
         <th scope="col">Due Date</th>
         <th scope="col">Completed</th>
-        <th scope="col">Category</th>
+        <th scope="col">Tags</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +23,10 @@
             <td>{{ task.title }}</td>
             <td>{{ task.due_date }}</td>
             <td>{{ task.completed }}</td>
-            <td>{{ task.category }}</td>
+            {% for tag in task.tags.all %}
+                <td><span class="badge badge-danger">{{ tag }}</span></td>
+            {% endfor %}
+            
         </tr>
     </tbody>
     

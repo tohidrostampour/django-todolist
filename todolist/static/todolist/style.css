@@ -387,6 +387,7 @@ form-task-list .input-field label {
     color: var(--btn-text-hover);
     text-decoration: none;
     letter-spacing:3px;
+    transition: letter-spacing 0.5s;
   }
 
   .list-group-item .high{
@@ -399,8 +400,8 @@ form-task-list .input-field label {
     border-left: 2rem solid rgb(99, 138, 29);
   }
   .list-group-item .done{
-    background-color:rgb(255, 255, 255);
-    color:rgb(184, 25, 25);
+    border-left: 2rem solid #ffffff;
+
   }
 /* end task list */
 

@@ -1,5 +1,5 @@
 let menu = document.querySelector('.theme-container');
-let Background = document.querySelectorAll(".input-field input");
+let Background = document.querySelectorAll(".input-field-c input");
 
 document.addEventListener('DOMContentLoaded', () => {
     let items = readFromLocalStorage('background');

@@ -289,7 +289,7 @@ form-task-list .input-field label {
     padding:20px;
     position:fixed;
     top:21%; right: -100%;
-    background-color: #8ab0ca;
+    background-color: var(--btn-color);
   }
 
   .theme-container.active{
@@ -297,7 +297,7 @@ form-task-list .input-field label {
   }
 
   .theme-container h3{
-    color: #ffffff;
+    color: var(--title-color);
     text-align: center;
   }
 
@@ -310,15 +310,15 @@ form-task-list .input-field label {
     justify-content: space-between;
     padding: 1rem;
   }
-  .theme-container form .input-field{
+  .theme-container form .input-field-c{
     width: 100%;
     padding: .5rem;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
   }
-  .theme-container form .input-field label{
-    color: #A67A29;
+  .theme-container form .input-field-c label{
+    color: var(--lable-color);
     font-weight: bold;
   }
 

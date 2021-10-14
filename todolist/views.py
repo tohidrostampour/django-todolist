@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from taggit.models import Tag
 
 from .models import Task
-from .forms import TaskCreateForm
+from .forms import TaskCreateForm, TodoForm
 
 
 
@@ -70,14 +70,15 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
     model = Task
+    form_class = TodoForm
     template_name = 'todolist/task_update.html'
-    fields = ('title', 'due_date', 'tags','priority', 'completed')
+    # fields = ('title', 'due_date', 'tags','priority', 'completed')
     success_url = reverse_lazy('todolist:tasks')
 
-    def get_form(self):
-        form = super().get_form()
-        form.fields['due_date'].widget = DateTimePickerInput()
-        return form
+    # def get_form(self):
+    #     form = super().get_form()
+    #     form.fields['due_date'].widget = DateTimePickerInput()
+    #     return form
 
 
 class TaskDelete(LoginRequiredMixin, DeleteView):

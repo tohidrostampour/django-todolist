@@ -153,3 +153,57 @@ p a:hover {
 }
 
 /* End register */
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.email-form p {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.email-form p input {
+  width: 60%;
+  background-color: transparent;
+  border: none;
+  outline: none !important;
+  color: var(--title-color);
+  border-bottom: 1px solid var(--lable-color);
+
+}
+
+.email-form p label {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--lable-color);
+
+}
+
+
+.btn {
+  background-color: var(--btn-color);
+  width: 20%;
+  border-radius: 10px;
+  margin-top: 4rem;
+  color: var(--btn-text);
+  border: none;
+  outline: none;
+  font-size: 18px;
+
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+  color: var(--btn-text-hover);
+  letter-spacing: 2px;
+  width: 30%;
+  transition: 1.5s;
+}

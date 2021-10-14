@@ -419,7 +419,7 @@ form-task-list .input-field label {
   padding: 2rem;
   align-items: center;
   justify-content: center;
-  background-color: var(--main-box);
+  /* background-color: var(--main-box); */
   border-radius: 1rem;
 }
 

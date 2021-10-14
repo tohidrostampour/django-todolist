@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+{% load static %}
 <head>
   <meta charset="utf-8">
   <title>{%block title %} {% endblock %}</title>
@@ -29,7 +29,9 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 
-  {% block custom_tags %} {% endblock %}
+  {% block custom_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+  {% endblock %}
 </head>
 
 <body class="base-body">
@@ -37,8 +39,7 @@
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
-        <div class="main-card" id="list1"
-          style="border-radius: .75rem; background-color: #3F3A40; margin: 3rem auto; width: 90%; border-color: #8ab0ca;">
+        <div class="main-card" id="list1" style="border-radius: .75rem; margin: 3rem auto; width: 90%;">
           <div class="card-body py-4 px-4 px-md-5">
             {% block content %}{% endblock %}
           </div>
@@ -46,7 +47,9 @@
       </div>
     </div>
   </div>
-
+{% block js_files %}
+<script type="text/javascript" src="{% static 'todolist/theme.js' %}"></script>
+{% endblock %}
 </body>
 
 </html>

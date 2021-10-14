@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static %}
 {% bootstrap_css %}
@@ -10,8 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
 {% endblock custom_tags %}
 
+{% block content  %}
 
-<body class="task-update">
     <form action="" method="POST" class="form-task-update">
         <div class="input-field">
             {% csrf_token %}
@@ -19,4 +20,5 @@
         </div>
         <input class="btn" type="submit" value="Edit">
     </form>
-</body>
+
+{% endblock content  %}

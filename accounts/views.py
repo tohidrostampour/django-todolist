@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserLoginForm
 
 
 class UserRegisterView(CreateView):
@@ -16,15 +16,11 @@ class UserRegisterView(CreateView):
 
 class UserLoginView(LoginView):
     template_name = 'accounts/login.html'
-    def post(self, request):
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('todolist:tasks')
-        else:
-            messages.error(request, 'Wrong password or username')
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse_lazy('todolist:tasks')
 
 
 class UserLogoutView(View):

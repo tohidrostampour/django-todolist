@@ -12,7 +12,6 @@
     <h1>Welcome to our website</h1> 
     <form class="forms" action="" method="post">
         {% csrf_token %}
-        
        <div class="input-field">
         <label class="label" for="{{ form.username.id_for_label }}"> Username </label>
         {{ form.username }}
@@ -25,7 +24,7 @@
         {{ form.password.errors }}
        </div>
 
-
+        {% comment %} {{form.as_p}} {% endcomment %}
         <input type="submit" value="Sign In" class="btn btn-outline btn-outline-dashed btn-outline-dark
         btn-active-light-info">
     </form>

@@ -1,8 +1,5 @@
 let menu = document.querySelector('.theme-container');
 
-console.log('hi');
-
-
 document.addEventListener('DOMContentLoaded', () => {
     let items;
 

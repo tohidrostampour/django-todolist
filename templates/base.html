@@ -30,7 +30,7 @@
   </script>
 
   {% block custom_tags %}
-    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+    
   {% endblock %}
 </head>
 
@@ -47,9 +47,9 @@
       </div>
     </div>
   </div>
-{% block js_files %}
-<script type="text/javascript" src="{% static 'todolist/theme.js' %}"></script>
-{% endblock %}
+  {% block js_files %}
+  <script type="text/javascript" src="{% static 'todolist/theme.js' %}"></script>
+  {% endblock %}
 </body>
 
 </html>

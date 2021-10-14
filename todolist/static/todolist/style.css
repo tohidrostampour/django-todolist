@@ -10,6 +10,15 @@
 }
 
 
+.base-body{
+  background-color: var(--main-color);
+}
+
+.main-card{
+  background-color: var(--main-box);
+  border-color: var(--title-color);
+}
+
 
 .task-confirm {
   background-color: var(--main-color);
@@ -271,6 +280,11 @@ form-task-list .input-field label {
     top:21%; right: -100%;
     background-color: #8ab0ca;
   }
+
+  .theme-container.active{
+    right: 14%;
+  }
+
   .theme-container h3{
     color: #ffffff;
     text-align: center;

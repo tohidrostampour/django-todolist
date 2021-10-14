@@ -1,11 +1,7 @@
-let themeOpen = document.querySelector('.head-content .theme-open');
 let menu = document.querySelector('.theme-container');
 
 console.log('hi');
 
-themeOpen.onclick = function () {
-    menu.classList.toggle('active');
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     let items;
@@ -16,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         items = localStorage.getItem('background').split(',');
     }
 
-    document.querySelector(':root').style.setProperty('--main-background', items[0]);
+    document.querySelector(':root').style.setProperty('--main-color', items[0]);
     document.querySelector(':root').style.setProperty('--main-box', items[1]);
     document.querySelector(':root').style.setProperty('--title-color', items[2]);
     document.querySelector(':root').style.setProperty('--lable-color', items[3]);
@@ -29,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let Background = document.querySelectorAll(".input-field input");
 
 document.querySelector('.change-theme').addEventListener('click', function () {
-    document.querySelector(':root').style.setProperty('--main-background', Background[0].value);
+    document.querySelector(':root').style.setProperty('--main-color', Background[0].value);
     document.querySelector(':root').style.setProperty('--main-box', Background[1].value);
     document.querySelector(':root').style.setProperty('--title-color', Background[2].value);
     document.querySelector(':root').style.setProperty('--lable-color', Background[3].value);
@@ -43,3 +39,10 @@ document.querySelector('.change-theme').addEventListener('click', function () {
     localStorage.setItem('background', backgroundColor);
 
 })
+
+
+let themeOpen = document.querySelector('.head-content .theme-open');
+
+themeOpen.onclick = function () {
+    menu.classList.toggle('active');
+}

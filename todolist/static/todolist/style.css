@@ -373,7 +373,7 @@ form-task-list .input-field label {
   }
 
   .list-group-item{
-    width: 70%;
+    width: 60%;
     margin: 1rem auto;
   }
   
@@ -382,7 +382,6 @@ form-task-list .input-field label {
     color: var(--btn-text);
     text-align: center;
     background-color: var(--btn-color);
-
   }
   .list-group-item a:hover{
     color: var(--btn-text-hover);
@@ -391,13 +390,13 @@ form-task-list .input-field label {
   }
 
   .list-group-item .high{
-    background-color:rgb(90, 29, 29);
+    border-left: 2rem solid rgb(90, 29, 29);
   }
   .list-group-item .medium{
-    background-color:rgb(143, 63, 9);
+    border-left: 2rem solid rgb(143, 63, 9);
   }
   .list-group-item .low{
-    background-color:rgb(99, 138, 29);
+    border-left: 2rem solid rgb(99, 138, 29);
   }
   .list-group-item .done{
     background-color:rgb(255, 255, 255);

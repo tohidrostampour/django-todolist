@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block custom_tags %}
-    <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
 {% endblock custom_tags %}
 
 
@@ -12,10 +12,10 @@
         <a href="{% url 'todolist:task-update' task.id %}" class="btn-detail">Edit</a>
         <a href="{% url 'todolist:tasks' %}" class="btn-detail"> Back </a>
         <tr>
-        <th scope="col">Todo item</th>
-        <th scope="col">Due Date</th>
-        <th scope="col">Completed</th>
-        <th scope="col">Tags</th>
+            <th scope="col">Todo item</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Tags</th>
         </tr>
     </thead>
     <tbody>
@@ -23,11 +23,15 @@
             <td>{{ task.title }}</td>
             <td>{{ task.due_date }}</td>
             <td>{{ task.completed }}</td>
-            {% for tag in task.tags.all %}
-                <td><span class="badge badge-danger">{{ tag }}</span></td>
-            {% endfor %}
-            
+            <td>
+                {% for tag in task.tags.all %}
+                <span class="badge badge-danger">{{ tag }}</span>
+                {% endfor %}
+
+            </td>
+
+
         </tr>
     </tbody>
-    
-{% endblock %}
+
+    {% endblock %}

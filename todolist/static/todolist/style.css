@@ -266,6 +266,17 @@ form-task-list .input-field label {
       color: var(--title-color);
   }
 
+  tr td span{
+    color: var(--btn-text);
+    background-color: var(--btn-color);
+    margin: 0.25px;
+  }
+
+  tr td span:hover{
+    color: var(--btn-text-hover);
+  }
+
+
   /* end task detail */
 
   .theme-container{
@@ -346,26 +357,35 @@ form-task-list .input-field label {
     color: var(--title-color);
   }
   .card{
-    background-color: #BABDBF;
+    border: 3px solid var(--title-color);
+    background-color: transparent;
+    border-radius: 2rem;
   }
   .form-task-list{
     display: flex;
     width: 100%;
     padding: 1rem;
+    justify-content: space-between;
   }
   .form-task-list .input-field{
-    width: 80%;
+    width: 70%;
   }
+  .form-task-list .input-field p{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+  }
+
   .form-task-list .input-field input{
-    width: 80%;
-    background-color: #BABDBF;
+    width: 70%;
+    background-color: transparent;
     border: none;
     outline: none !important;
-    color:  var(--main-box);
+    color:  var(--title-color);
     border-bottom: 1px solid var(--lable-color);
   }
 
-  form-task-list .input-field label{
+  .form-task-list .input-field label{
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color:var(--lable-color);

@@ -1,3 +1,25 @@
+:root {
+  --main-color: rgb(27, 27, 27);
+  --main-box: #3F3A40;
+  --title-color: #8ab0ca;
+  --lable-color: #A67A29;
+  --btn-color: #73685F;
+  --btn-text: #ffffff;
+  --btn-hover: #A67A29;
+  --btn-text-hover: #8ab0ca;
+}
+
+
+.base-body{
+  background-color: var(--main-color);
+}
+
+.main-card{
+  background-color: var(--main-box);
+  border-color: var(--title-color);
+}
+
+
 h1{
     color: #8ab0ca;
     text-align: center;

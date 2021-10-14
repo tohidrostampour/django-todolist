@@ -29,6 +29,6 @@
         <input type="submit" value="Sign In" class="btn btn-outline btn-outline-dashed btn-outline-dark
         btn-active-light-info">
     </form>
-    <a href="{% url 'password_reset' %}">Forgot Password!</a>
-    <a href="{% url 'user-register'%}"> Sign Up</a>
+    <p>Forgot your Password?<a href="{% url 'password_reset' %}">Reset Password</a></p>
+    <p>Not Registered yet?<a href="{% url 'user-register'%}"> Sign Up</a></p>
 {% endblock content %}

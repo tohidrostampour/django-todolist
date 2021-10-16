@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Tasks {% endblock %}
+{% block custom_tags %}
+<link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+{% endblock custom_tags %}
+{% block content %}
+{% for task in tagged_tasks %}
+{% if not task.completed %}
+{% if task.priority == 1 %} <li
+    class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <a href="{% url 'todolist:task-detail' task.id %}"
+        class="low fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+</li>
+{% elif task.priority == 2 %}
+<li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <a href="{% url 'todolist:task-detail' task.id %}"
+        class="medium fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+</li>
+{% else %}
+<li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <a href="{% url 'todolist:task-detail' task.id %}"
+        class="high fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded">{{ task.title }}</a>
+</li>
+{% endif %}
+
+{% else %}
+<li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+    <a href="{% url 'todolist:task-detail' task.id %}"
+        class="done fw-normal mb-0 w-100 ms-n2 ps-2 py-1 rounded"><s>{{ task.title }}</s></a>
+</li>
+{% endif %}
+{% empty %}
+<h3>No Item</h3>
+{% endfor %}
+{% endblock %}

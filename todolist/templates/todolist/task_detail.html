@@ -25,7 +25,7 @@
             <td>{{ task.completed }}</td>
             <td>
                 {% for tag in task.tags.all %}
-                <span class="badge badge-danger">{{ tag }}</span>
+                <span class="badge badge-danger"><a href="{% url 'todolist:tagged-tasks' tag.slug %}">{{ tag }}</a></span>
                 {% endfor %}
 
             </td>

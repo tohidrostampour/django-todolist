@@ -1,15 +1,16 @@
 from bootstrap_datepicker_plus import DateTimePickerInput
+from django.http.response import HttpResponse
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, FormView
 from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from taggit.models import Tag
 
 from .models import Task
 from .forms import TaskCreateForm, TodoForm
-
+from .permissions import HasPerm
 
 
 
@@ -60,14 +61,17 @@ class TaskListCreateView(LoginRequiredMixin, View):
         return view(request,*args, **kwargs)
 
 
-class TaskDetail(LoginRequiredMixin, DetailView):
+class TaskDetail(LoginRequiredMixin, HasPerm,DetailView):
     login_url = '/accounts/login/'
     model = Task
     template_name = 'todolist/task_detail.html'
     context_object_name = 'task'
+    
+    def get(self, request, *args, **kwargs):
+        return HasPerm.has_perm(self, request, *args, **kwargs)
 
 
-class TaskUpdate(LoginRequiredMixin, UpdateView):
+class TaskUpdate(LoginRequiredMixin, HasPerm, UpdateView):
     login_url = '/accounts/login/'
     model = Task
     form_class = TodoForm
@@ -79,11 +83,31 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     #     form = super().get_form()
     #     form.fields['due_date'].widget = DateTimePickerInput()
     #     return form
+    def get(self, request, *args, **kwargs):
+        return HasPerm.has_perm(self, request, *args, **kwargs)
 
 
-class TaskDelete(LoginRequiredMixin, DeleteView):
+
+class TaskDelete(LoginRequiredMixin, HasPerm, DeleteView):
     login_url = '/accounts/login/'
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('todolist:tasks')
 
+    def get(self, request, *args, **kwargs):
+        return HasPerm.has_perm(self, request, *args, **kwargs)
+
+
+class TaggedTasks(LoginRequiredMixin, HasPerm, ListView):
+    login_url = '/accounts/login/'
+    look_up = 'slug'
+    context_object_name = 'tagged_tasks'
+    template_name = 'todolist/tagged_tasks.html'
+
+    def get_queryset(self):
+
+        try:
+            queryset = Task.objects.filter(tags__name__in=[self.kwargs['slug']])
+        except:
+            return None
+        return queryset

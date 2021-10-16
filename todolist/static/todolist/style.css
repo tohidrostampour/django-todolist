@@ -12,14 +12,16 @@
 
 .base-body{
   background-color: var(--main-color);
+  overflow: auto;
 }
 
 .main-card{
   background-color: var(--main-box);
-  border-color: var(--title-color);
+  border: 2px solid var(--title-color);
+  padding: .25rem;
+  height: auto !important;
+  min-height: 60%;
 }
-
-
 .task-confirm {
   background-color: var(--main-color);
 }
@@ -77,167 +79,6 @@
 }
 
 /* end task confirm */
-
-.btn-detail {
-  color: var(--btn-text);
-  font-size: 16px;
-  background-color: var(--btn-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  margin-right: 10px;
-  border: none;
-  outline: none;
-}
-
-.btn-detail:hover {
-  background-color: var(--btn-hover);
-  color: var(--btn-text-hover);
-  letter-spacing: 2px;
-  transition: 1.5s;
-}
-
-tr th {
-  color: var(--title-color);
-}
-
-tr td {
-  color: var(--btn-text);
-}
-
-tr:hover td {
-  color: var(--title-color);
-}
-
-/* end task detail */
-
-.theme-container {
-  display: flex;
-  flex-direction: column;
-  height: 75vh;
-  min-width: 450px;
-  z-index: 1000;
-  text-align: right;
-  padding: 20px;
-  position: fixed;
-  top: 21%;
-  right: -100%;
-  background-color: #8ab0ca;
-}
-
-.theme-container h3 {
-  color: #ffffff;
-  text-align: center;
-}
-
-.theme-container form {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.theme-container form .input-field {
-  width: 100%;
-  padding: .5rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.theme-container form .input-field label {
-  color: #A67A29;
-  font-weight: bold;
-}
-
-.head-content {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.head-content svg {
-  color: var(--btn-color)
-}
-
-.head-content svg:hover {
-  color: var(--btn-text-hover)
-}
-
-.btn {
-  width: 20%;
-  padding: .55rem;
-  color: var(--btn-text);
-  font-size: 16px;
-  background-color: var(--btn-color);
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
-
-.btn:hover {
-  background-color: var(--btn-hover);
-  color: var(--btn-text-hover);
-  width: 25%;
-  transition: width 1.5s;
-}
-
-.h1 u {
-  text-decoration: none;
-  color: var(--title-color);
-}
-
-.card {
-  background-color: #BABDBF;
-}
-
-.form-task-list {
-  display: flex;
-  width: 100%;
-  padding: 1rem;
-}
-
-.form-task-list .input-field {
-  width: 80%;
-}
-
-.form-task-list .input-field input {
-  width: 80%;
-  background-color: #BABDBF;
-  border: none;
-  outline: none !important;
-  color: var(--main-box);
-  border-bottom: 1px solid var(--lable-color);
-}
-
-form-task-list .input-field label {
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--lable-color);
-  margin-right: 5px;
-}
-
-.list-group-item {
-  width: 70%;
-  margin: 1rem auto;
-}
-
-.list-group-item a {
-  text-decoration: none;
-  color: var(--btn-text);
-  text-align: center;
-  background-color: var(--btn-color);
-
-}
-
-.list-group-item a:hover {
-  color: var(--btn-text-hover);
-  text-decoration: underline;
-}
   .btn-detail{
     color: var(--btn-text);
     font-size: 16px;
@@ -269,6 +110,7 @@ form-task-list .input-field label {
   tr td span{
     color: var(--btn-text);
     background-color: var(--btn-color);
+    border-radius: 10px;
     margin: 0.25px;
   }
 
@@ -279,21 +121,30 @@ form-task-list .input-field label {
 
   /* end task detail */
 
-  .theme-container{
-    display: flex;
+  .theme-container, .theme-container2{
     flex-direction: column;
     height:75vh;
     min-width:450px;
     z-index: 1000;
     text-align: right;
     padding:20px;
-    position:fixed;
-    top:21%; right: -100%;
+    position: absolute;
+    top:15%; right: -100%;
     background-color: var(--btn-color);
+    display: none;
   }
 
-  .theme-container.active{
-    right: 14%;
+  .theme-container.active, .theme-container2.active{
+    right: 8%;
+    display: flex;
+  }
+
+  .theme-container2 .themes{
+    width: 350px;
+    height:10vh;
+    margin: 0 auto;
+    border: 3px solid var(--btn-text);
+    background: linear-gradient( 90deg, #B4D9D9, #B4D9D9 70px, #9FBFBF 70px, #9FBFBF 140px, #080D0C 140px, #080D0C 210px, #2C403A 210px, #2C403A 280px, #8AA69E 280px, #8AA69E 350px);
   }
 
   .theme-container h3{
@@ -322,6 +173,25 @@ form-task-list .input-field label {
     font-weight: bold;
   }
 
+  .theme-container form .change-theme{
+    width: 45%;
+    padding: .35rem;
+    margin-top: .5rem;
+    color: var(--btn-text);
+    font-size: 16px;
+    background-color: var(--btn-color);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+
+  .theme-container form .change-theme:hover{
+    background-color: var(--btn-hover);
+    color: var(--btn-text-hover);
+    width: 55%;
+    transition: width 1.5s;
+  }
+
   .head-content{
     width: 100%;
     display: flex;
@@ -329,11 +199,24 @@ form-task-list .input-field label {
     justify-content: space-between;
   }
 
+  .head-content .theme-part{
+    display: flex;
+    gap: 1rem;
+  }
+
+  .head-content a{
+    text-decoration: none;
+  }
+
   .head-content svg{
     color: var(--btn-color)
   }
   .head-content svg:hover{
     color: var(--btn-text-hover)
+  }
+
+  .my-4{
+    color: var(--title-color);
   }
 
   .btn{
@@ -407,7 +290,8 @@ form-task-list .input-field label {
     color: var(--btn-text-hover);
     text-decoration: none;
     letter-spacing:3px;
-    transition: letter-spacing 0.5s;
+    background-color: var(--btn-hover);
+    transition: letter-spacing 1s;
   }
 
   .list-group-item .high{

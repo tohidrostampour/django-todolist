@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 {% load static %}
+
 <head>
   <meta charset="utf-8">
   <title>{%block title %} {% endblock %}</title>
@@ -34,16 +35,9 @@
 </head>
 
 <body class="base-body">
-
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="main-card" id="list1" style="border-radius: .75rem; margin: 3rem auto; width: 90%;">
-          <div class="card-body py-4 px-4 px-md-5">
-            {% block content %}{% endblock %}
-          </div>
-        </div>
-      </div>
+  <div class="main-card" id="list1" style="border-radius: .75rem; margin: 3rem auto; width: 85%;">
+    <div class="card-body">
+      {% block content %}{% endblock %}
     </div>
   </div>
   {% block js_files %}

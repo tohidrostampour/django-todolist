@@ -160,13 +160,14 @@ p a:hover {
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 1rem;
 }
 
 .email-form p {
   display: flex;
   justify-content: space-between;
   width: 60%;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-top: 0.5rem;
 }
 
@@ -192,7 +193,7 @@ p a:hover {
   background-color: var(--btn-color);
   width: 20%;
   border-radius: 10px;
-  margin-top: 4rem;
+  margin: 1.75rem;
   color: var(--btn-text);
   border: none;
   outline: none;

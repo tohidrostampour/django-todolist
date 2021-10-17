@@ -208,3 +208,13 @@ p a:hover {
   width: 30%;
   transition: 1.5s;
 }
+
+.h3{
+  align-items: center;
+  color: var(--title-color);
+}
+
+p{
+  align-items: left;
+  color: var(--btn-text);
+}

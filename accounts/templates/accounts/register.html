@@ -10,7 +10,7 @@
 
 {% block content %}
 <h1>Sign up</h1>
-    <form action="" method="POST" class="register-form">
+    <form class="forms" action="" method="POST" class="register-form">
         {% csrf_token %}
         {{ form.as_p }}
     <input class="btn" type="submit" value="Sign Up">

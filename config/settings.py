@@ -30,9 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'taggit',
     'bootstrap4',
     'bootstrap_datepicker_plus',
+    'social_django',
 
     'accounts.apps.AccountsConfig',
     'todolist.apps.TodolistConfig',
@@ -122,6 +124,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, "todolist/static")
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
+1# Google auth settings
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+
+
 # SMTP Config
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
@@ -130,3 +149,8 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+
+# taggit
+
+TAGGIT_CASE_INSENSITIVE = True

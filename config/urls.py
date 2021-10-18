@@ -8,4 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('todolist.urls'), name='todolist'),
     path('accounts/', include('accounts.urls'), name='accounts'),
+    path('social/', include('social_django.urls', namespace='social')),
 ]

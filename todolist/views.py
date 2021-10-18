@@ -105,9 +105,8 @@ class TaggedTasks(LoginRequiredMixin, HasPerm, ListView):
     template_name = 'todolist/tagged_tasks.html'
 
     def get_queryset(self):
-
         try:
-            queryset = Task.objects.filter(tags__name__in=[self.kwargs['slug']])
+            queryset = Task.objects.filter(tags__slug__iexact=self.kwargs['slug'])
         except:
             return None
         return queryset

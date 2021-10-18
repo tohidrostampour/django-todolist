@@ -30,4 +30,5 @@
     </form>
     <p>Forgot your Password?<a href="{% url 'password_reset' %}">Reset Password</a></p>
     <p>Not Registered yet?<a href="{% url 'user-register'%}"> Sign Up</a></p>
+    <p>Login with google<a href="{% url 'social:begin' 'google-oauth2' %}"><ion-icon name="logo-google"></ion-icon></a></p>
 {% endblock content %}

@@ -35,6 +35,10 @@ h1 {
   justify-content: center;
 }
 
+.forms .input-field p{
+  display: block;
+}
+
 .forms .input-field {
   display: flex;
   padding: 2rem;

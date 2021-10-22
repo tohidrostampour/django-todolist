@@ -7,7 +7,7 @@
  {{form.media}} 
 
 {% block title %}
-    Edit
+    Update
 {% endblock title %}
 
 
@@ -16,13 +16,14 @@
 {% endblock custom_tags %}
 
 {% block content  %}
+        <a href="{% url 'todolist:task-detail' task.pk %}" class="btn-detail"> Back </a>
 
     <form action="" method="POST" class="form-task-update">
         <div class="input-field">
             {% csrf_token %}
             {% bootstrap_form form %}
         </div>
-        <input class="btn" type="submit" value="Edit">
+        <input class="btn" type="submit" value="Update">
     </form>
 
 {% endblock content  %}

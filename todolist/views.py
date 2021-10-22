@@ -75,16 +75,16 @@ class TaskUpdate(LoginRequiredMixin, HasPerm, UpdateView):
     login_url = '/accounts/login/'
     model = Task
     form_class = TodoForm
+    context_object_name = 'task'
     template_name = 'todolist/task_update.html'
     # fields = ('title', 'due_date', 'tags','priority', 'completed')
-    success_url = reverse_lazy('todolist:tasks')
+    # success_url = reverse_lazy('todolist:task-detail')
 
-    # def get_form(self):
-    #     form = super().get_form()
-    #     form.fields['due_date'].widget = DateTimePickerInput()
-    #     return form
+
+
     def get(self, request, *args, **kwargs):
         return HasPerm.has_perm(self, request, *args, **kwargs)
+
 
 
 

@@ -9,6 +9,7 @@ from taggit.managers import TaggableManager
 
 class Task(models.Model):
     class Priority(models.IntegerChoices):
+        # get human readable form by instance.get_field_display() function
         LOW = 1, 'Low'
         Medium = 2, 'Medium'
         High = 3, 'High'
@@ -21,7 +22,11 @@ class Task(models.Model):
     priority = models.PositiveIntegerField(choices=Priority.choices, default=Priority.LOW)
 
     class Meta:
-        ordering = ('priority',)
+        ordering = ('-priority',)
 
     def __str__(self) -> str:
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse("todolist:task-detail", args=[self.pk])
+    
